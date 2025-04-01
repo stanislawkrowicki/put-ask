@@ -1,0 +1,131 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "IP5306" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "U" (id 0) (at 12.7 17.78 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "IP5306" (id 1) (at 12.7 15.24 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Footprint" "IP5306:SOIC9P127_490X600X170L84X42T330X241N" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MF" "Injoinic" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Description" "\n                        \n                            Fully-Integrated Power Bank System-On-Chip with 2.1A charger, 2.4A discharger\n                        \n" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Package" "None" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Price" "None" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "SnapEDA_Link" "https://www.snapeda.com/parts/IP5306/Injoinic/view-part/?ref=snap" (id 8) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MP" "IP5306" (id 9) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Availability" "In Stock" (id 10) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Check_prices" "https://www.snapeda.com/parts/IP5306/Injoinic/view-part/?ref=eda" (id 11) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "IP5306_0_0"
+      (polyline
+        (pts (xy 0.0 0.0) (xy 33.02 0.0)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 33.02 0.0) (xy 33.02 25.4)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 33.02 25.4) (xy 20.32 25.4)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 12.7 25.4) (xy 0.0 25.4)) (stroke (width 0.254))
+      )
+      (polyline
+        (pts (xy 0.0 25.4) (xy 0.0 0.0)) (stroke (width 0.254))
+      )
+      (arc (start 12.7 25.4) (mid 16.51 21.59) (end 20.32 25.4)
+        (stroke (width 0.254) (type default) (color 0 0 0 0))
+        (fill (type none))
+      )
+      (pin power_in line (at -5.08 20.32 0) (length 5.08)
+        (name "VCC"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "1"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -5.08 15.24 0) (length 5.08)
+        (name "LED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "2"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -5.08 10.16 0) (length 5.08)
+        (name "LED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "3"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -5.08 5.08 0) (length 5.08)
+        (name "LED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "4"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 38.1 5.08 180.0) (length 5.08)
+        (name "KEY"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "5"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 38.1 10.16 180.0) (length 5.08)
+        (name "BAT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "6"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 38.1 15.24 180.0) (length 5.08)
+        (name "SW"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "7"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 38.1 20.32 180.0) (length 5.08)
+        (name "VOUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "8"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -5.08 90.0) (length 5.08)
+        (name "GND"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "9"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)
