@@ -1,6 +1,6 @@
-# 🛠️ TUTAJ BEDZIE JAKAS FAJNA NAZWA ALE JESZCZE GŁOSUJEMY JAKA
+# 🛠️ PepeBoy
 
-**Brief project description** – what it is and what problems it solves.
+**Portable GameBoy style console. Based on ESP32 microprocessor, 2.8" TFT display, WiFi** 
 
 ---
 
