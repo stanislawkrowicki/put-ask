@@ -8,9 +8,9 @@
     "high_contrast_mode": 0,
     "net_color_mode": 1,
     "opacity": {
-      "images": 0.6,
+      "images": 1.0,
       "pads": 1.0,
-      "shapes": 1.0,
+      "shapes": 0.6200000047683716,
       "tracks": 1.0,
       "vias": 1.0,
       "zones": 0.6
@@ -31,25 +31,18 @@
     "visible_items": [
       "vias",
       "footprint_text",
-      "footprint_anchors",
-      "ratsnest",
       "grid",
       "footprints_front",
       "footprints_back",
       "footprint_values",
       "footprint_references",
       "tracks",
-      "drc_errors",
-      "drawing_sheet",
       "bitmaps",
       "pads",
       "zones",
-      "drc_warnings",
-      "locked_item_shadows",
-      "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_0fffffff_ffffffdf",
+    "visible_layers": "00000000_00000000_0fffffff_ffffffff",
     "zone_display_mode": 0
   },
   "git": {
