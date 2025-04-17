@@ -10001,7 +10001,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Library:SW_Push_12x12_aliexpress"
+		(property "Footprint" "TS04-66-95-BK-100-SMT:SW_TS04-66-95-BK-100-SMT"
 			(at 95.25 129.54 0)
 			(effects
 				(font
@@ -13664,7 +13664,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TS04-66-95-BK-100-SMT:SW_TS04-66-95-BK-100-SMT"
+		(property "Footprint" "components_lib:SW_TS04-66-95-BK-100-SMT"
 			(at 194.31 33.02 0)
 			(effects
 				(font
