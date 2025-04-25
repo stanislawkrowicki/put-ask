@@ -84,8 +84,8 @@ tutaj jakiś tekst o tym że super fajny designe co jesti czemu to jest i jak ba
   <img src="mdi/schem_all.jpg" alt="schematic of all" width="1000">
 </p> -->
 
-### Power managment unit (IP5306)
-Console can be power remotly using for example 18650 Li-ion battery. Pluging the console to external power through USB-C will power the device and charge the battery. IP5306 is used according to tipical application form a [datasheet](https://www.datasheetcafe.com/wp-content/uploads/2020/07/IP5306.pdf). We used one LED configuration, and skipped KEY_LED (D5 on datasheet)
+### Power Management Unit (IP5306)  
+The console can be powered remotely using, for example, a 18650 Li-ion battery. Plugging the console into external power through USB-C will power the device and charge the battery. The IP5306 is used according to the typical application from the [datasheet](https://www.datasheetcafe.com/wp-content/uploads/2020/07/IP5306.pdf). We used a one-LED configuration and skipped the KEY_LED (D5 on the datasheet).
 
 <p align="center">
   <img src="mdi/PMS.png" alt="ESP pinout form KiCad" width="800">
