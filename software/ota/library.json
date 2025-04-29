@@ -1,0 +1,6 @@
+{
+    "name": "OTA",
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
+  }
