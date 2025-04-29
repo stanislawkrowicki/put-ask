@@ -30,9 +30,17 @@ void OTAServer::handleHttpClient()
 
 void OTAServer::onUpdateFinish()
 {
-  httpServer.send(200, "text/plain", "Update success.");
-  delay(100);
-  ESP.restart();
+  if (Update.end(true)) // Finalize the update
+  {
+    httpServer.send(200, "text/plain", "Update success.");
+    delay(100);
+    ESP.restart();
+  }
+  else
+  {
+    httpServer.send(500, "text/plain", "Update failed.");
+    Update.printError(Serial); // Log the error for debugging
+  }
 }
 
 void OTAServer::handleUpdateUpload()
