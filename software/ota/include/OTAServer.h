@@ -21,9 +21,9 @@ private:
     void handleUpdate();
     void handleUpdateUpload();
 
-    void handleDiscoveries();
-
 public:
     OTAServer();
     void enable();
+    void handleHttpClient();
+    void handleDiscoveries();
 };

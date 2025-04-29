@@ -1,6 +1,6 @@
 {
     "name": "OTA",
     "license": "MIT",
-    "frameworks": "*",
+    "frameworks": "arduino",
     "platforms": "*"
   }

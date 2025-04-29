@@ -5,6 +5,10 @@ OTAServer::OTAServer() : httpServer(HTTP_SERVER_PORT) {}
 
 void OTAServer::setRoutes()
 {
+  httpServer.on("/", HTTP_GET, [this]()
+                {
+    httpServer.sendHeader("Location", "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    httpServer.send(302, "text/plain", "Redirecting..."); });
   httpServer.on("/update", HTTP_POST, [this]()
                 { this->handleUpdate(); }, [this]()
                 { this->handleUpdateUpload(); });
@@ -14,9 +18,14 @@ void OTAServer::enable()
 {
   udp.begin(UDP_PORT);
   Serial.println("UDP discovery server started");
-  httpServer.handleClient();
   setRoutes();
+  httpServer.begin();
   Serial.println("HTTP server started");
+}
+
+void OTAServer::handleHttpClient()
+{
+  httpServer.handleClient();
 }
 
 void OTAServer::handleUpdate()
