@@ -18,7 +18,7 @@ private:
     WebServer httpServer;
 
     void setRoutes();
-    void handleUpdate();
+    void onUpdateFinish();
     void handleUpdateUpload();
 
 public:

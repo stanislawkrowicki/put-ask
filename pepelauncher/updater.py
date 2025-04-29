@@ -32,7 +32,7 @@ def upload_firmware(device_ip: str, firmware_path: str):
     with open(firmware_path, 'rb') as f:
         response = requests.post(f'http://{device_ip}/update', files={'file': f})
 
-    print(response)
+    print(response.text)
 
 if __name__ == '__main__':
     # discover_devices()

@@ -10,7 +10,7 @@ void OTAServer::setRoutes()
     httpServer.sendHeader("Location", "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
     httpServer.send(302, "text/plain", "Redirecting..."); });
   httpServer.on("/update", HTTP_POST, [this]()
-                { this->handleUpdate(); }, [this]()
+                { this->onUpdateFinish(); }, [this]()
                 { this->handleUpdateUpload(); });
 }
 
@@ -28,8 +28,10 @@ void OTAServer::handleHttpClient()
   httpServer.handleClient();
 }
 
-void OTAServer::handleUpdate()
+void OTAServer::onUpdateFinish()
 {
+  httpServer.send(200, "text/plain", "Update success.");
+  delay(100);
   ESP.restart();
 }
 
@@ -47,14 +49,6 @@ void OTAServer::handleUpdateUpload()
   {
     if (Update.write(upload.buf, upload.currentSize) != upload.currentSize)
       Update.printError(Serial);
-  }
-  else if (upload.status == UPLOAD_FILE_END)
-  {
-    if (Update.end(true))
-    {
-      Serial.println("Firmware updated. Rebooting...");
-      ESP.restart();
-    }
   }
 }
 
