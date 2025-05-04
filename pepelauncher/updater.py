@@ -35,6 +35,6 @@ def upload_firmware(device_ip: str, firmware_path: str):
     print(response.text)
 
 if __name__ == '__main__':
-    # discover_devices()
-    upload_firmware('192.168.1.138', './games/example.bin')
+    discover_devices()
+    #upload_firmware('192.168.1.138', './games/example.bin')
     sock.close()
