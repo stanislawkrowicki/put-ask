@@ -49,6 +49,14 @@ html {
 
 .game {
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 256px;
+    height: 384px;
+}
+
+.game:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .game > img {
