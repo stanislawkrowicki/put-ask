@@ -2,6 +2,7 @@ import eel
 import thumbnails
 from pathlib import Path
 import esp_client
+import asyncio
 
 GAMES_PATH = './games/'
 
@@ -16,6 +17,13 @@ def get_games():
 @eel.expose
 def discover_devices():
     return esp_client.mock_discover_devices()
+
+@eel.expose
+def start_game(game: str):
+    device_ip = ''
+    firmware_path = Path(GAMES_PATH) / game / 'firmware.bin'
+    esp_client.mock_upload_firmware(device_ip, firmware_path)
+    print('Game started!')
 
 eel.start('index.html')
 

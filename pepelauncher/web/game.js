@@ -6,18 +6,14 @@ window.addEventListener('load', async () => {
     const games = await eel.get_games()()
 
     games.forEach((game) => {
-        const container = document.querySelector('#container')
-
-        const heading = document.createElement('h1')
-        heading.id = 'name'
-        heading.innerHTML = game.name
-
-        const img = document.createElement('img')
-        img.src = `./img/games/${game.thumbnail}`
-        img.alt = game.name
-
-        container.appendChild(heading)
-        container.appendChild(img)
-
+        document.querySelector('#name').innerHTML = game
+        
+        const img = document.querySelector('#thumbnail')
+        img.src = `./img/games/${game}.png`
+        img.alt = game
     })
 })
+
+const play = () => {
+    eel.start_game(getName())().then()
+}

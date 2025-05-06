@@ -4,10 +4,17 @@
         <title>PepeLauncher</title>
         <script type='text/javascript' src='/eel.js'></script>
         <script type='text/javascript' src='game.js'></script>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="game.css">
+        <link rel="stylesheet" href="shared.css">
     </head>
     
     <body>
-        <div id="container"></div>
+        <div id="container">
+            <img id="thumbnail">
+            <div id="bottom">
+                <h1 id="name"></h1>
+                <button id="play-button" onclick="play()">Play</button>
+            </div>
+        </div>
     </body>
 </html>

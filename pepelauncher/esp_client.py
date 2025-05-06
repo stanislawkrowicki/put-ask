@@ -48,4 +48,6 @@ def mock_discover_devices() -> tuple[str, str]:
 
 
 def mock_upload_firmware(device_ip: str, firmware_path: str) -> tuple[int, str]:
+    print(f'Uploading {firmware_path} to {device_ip}')
+    time.sleep(1)
     return (200, 'Update success')
