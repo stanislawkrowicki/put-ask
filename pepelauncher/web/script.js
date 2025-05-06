@@ -1,4 +1,9 @@
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
+    loadGames().then()
+    loadDevices().then()
+})
+
+const loadGames = async () => {
     const games = await eel.get_games()()
 
     games.forEach((game) => {
@@ -14,4 +19,28 @@ window.addEventListener('load', async () => {
         a.appendChild(img)
         document.querySelector('#games').appendChild(a)
     })
-})
+}
+
+const loadDevices = async() => {
+    const devices = await eel.discover_devices()()
+
+    devices.forEach((device) => {
+        const deviceName = device[0]
+
+        const div = document.createElement('div')
+        div.className = 'device'
+
+        const img = document.createElement('img')
+        img.src = 'img/phone.svg'
+        img.alt = deviceName
+
+        const p = document.createElement('p')
+        p.className = 'device-name'
+        p.innerHTML = deviceName
+        
+        div.appendChild(img)
+        div.appendChild(p)
+        
+        document.querySelector('#devices').appendChild(div)
+    })
+}

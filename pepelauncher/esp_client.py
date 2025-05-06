@@ -14,7 +14,7 @@ sock.settimeout(DISCOVERY_TIME)
 
 sock.sendto(DISCOVERY_MESSAGE, (BROADCAST_IP, UDP_PORT))
 
-def discover_devices():
+def discover_devices() -> tuple[str, str]:
     DISCOVERY_TIME = 3
     start = time.time()
     devices = []
@@ -26,15 +26,26 @@ def discover_devices():
         except socket.timeout:
             break
 
-    print(devices)
+    return devices
 
-def upload_firmware(device_ip: str, firmware_path: str):
+
+def upload_firmware(device_ip: str, firmware_path: str) -> tuple[int, str]:
     with open(firmware_path, 'rb') as f:
         response = requests.post(f'http://{device_ip}/update', files={'file': f})
 
-    print(response.text)
+    return (response.status_code, response.text)
 
-if __name__ == '__main__':
-    discover_devices()
-    #upload_firmware('192.168.1.138', './games/example.bin')
-    sock.close()
+
+"""
+Returns:
+tuple: 0: device name, 1: device ip
+"""
+def mock_discover_devices() -> tuple[str, str]:
+    return [
+        ('PepeBoy 1', '192.168.1.113'),
+        ('PePeBoy 2', '192.168.1.155')
+    ]
+
+
+def mock_upload_firmware(device_ip: str, firmware_path: str) -> tuple[int, str]:
+    return (200, 'Update success')
