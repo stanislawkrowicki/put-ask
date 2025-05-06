@@ -52,6 +52,11 @@ html {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 256px;
     height: 384px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    text-decoration: none;
 }
 
 .game:hover {
@@ -62,6 +67,38 @@ html {
 .game > img {
     width: 256px;
     height: 384px;
+}
+
+.game-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.game-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.game:hover .game-img {
+    transform: scale(1.05);
+}
+
+.game-overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    padding: 12px 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 8px 8px;
 }
 
 @media only screen and (min-width: 992px) {
