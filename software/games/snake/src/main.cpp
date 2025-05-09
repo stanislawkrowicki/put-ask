@@ -28,6 +28,12 @@ int prevSnakeX[SNAKE_MAX];
 int prevSnakeY[SNAKE_MAX];
 int snakeLength = 1;
 int appleX, appleY;
+int rockX,rockY;
+bool rock_active = false;
+unsigned long rock_spawn_time = 0;
+int rock_time = 5000;
+int rock_interval = 7000;
+unsigned long last_rock_spawn = 0;
 
 int score = 0;
 int game_speed = 150;
@@ -44,11 +50,11 @@ void setup()
   pinMode(BTN_RIGHT, INPUT_PULLUP);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-  }
+  // while (WiFi.status() != WL_CONNECTED)
+  // {
+  //   delay(500);
+  //   Serial.print(".");
+  // }
   Serial.println("WiFi connected");
 
   otaServer.enable();
@@ -75,6 +81,16 @@ void setup()
 
 
   
+}
+
+void draw_score() {
+  // tft.fillRect(0, 0, 80, 16, TFT_DARKCYAN);
+
+  tft.setCursor(0, 0);
+  tft.setTextColor(TFT_YELLOW);
+  tft.setTextSize(2);
+  tft.print("Score: ");
+  tft.print(score);
 }
 
 void handle_buttons() {
@@ -139,7 +155,10 @@ void check_apple() {
   if (abs(snakeX[0] - appleX) < 8 && abs(snakeY[0] - appleY) < 8) {
     if (snakeLength < SNAKE_MAX) snakeLength++;
     is_apple = false;
+    tft.fillRect(appleX, appleY, 8, 8, TFT_DARKCYAN);
     score++;
+    tft.fillRect(50, 0,60 , 16, TFT_DARKCYAN);
+    draw_score();
   }
 
   if (score % 2 == 0 && score != last_score_for_speed && game_speed > 50) {
@@ -179,7 +198,40 @@ void game_over() {
 
   game_over_flag = true;
 }
+void draw_rock() {
+  bool valid = false;
+  while(!valid){
+    rockX = random(2, 29) * 8;
+    rockY = random(2, 28) * 8;
+    valid = true;
+    for(int i=0;i<snakeLength;i++){
+      if((snakeX[i]==rockX && snakeY[i]==rockY)||(appleX==rockX && appleY==rockY)){
+        valid = false;
+        break;
+      }
+    }
+  }
+  tft.fillRect(rockX,rockY,12,12,TFT_BLACK);
+  rock_active = true;
+  rock_spawn_time = millis();
+}
 
+void handle_rock(){
+  unsigned long current_time = millis();
+  if(!rock_active && current_time - last_rock_spawn >= rock_interval){
+    draw_rock();
+    last_rock_spawn = current_time;
+  }
+
+  if(rock_active && current_time - last_rock_spawn >= rock_time){
+    tft.fillRect(rockX,rockY,12,12,TFT_DARKCYAN);
+    rock_active = false;
+  }
+
+  if (abs(snakeX[0] - rockX) < 12 && abs(snakeY[0] - rockY) < 12) {
+    game_over();
+  }
+}
 void reset_game() {
   direction = 4;
   in_boarder = true;
@@ -192,17 +244,9 @@ void reset_game() {
   snakeY[0] = 30;
   game_over_flag = false;
 
-  tft.fillScreen(TFT_BLACK);
+  tft.fillScreen(TFT_DARKCYAN);
 }
-void draw_score() {
-  tft.fillRect(0, 0, 80, 16, TFT_DARKCYAN);
 
-  tft.setCursor(0, 0);
-  tft.setTextColor(TFT_YELLOW);
-  tft.setTextSize(2);
-  tft.print("Score: ");
-  tft.print(score);
-}
 void loop()
 {
 
@@ -220,13 +264,14 @@ void loop()
     return;
   }
 
-  tft.fillScreen(TFT_DARKCYAN);
+  // tft.fillScreen(TFT_DARKCYAN);
   handle_buttons();
   move_snake();
   draw_score();
   draw_apple();
   draw_snake();
   check_apple();
+  handle_rock();
   check_collision();
 
 
