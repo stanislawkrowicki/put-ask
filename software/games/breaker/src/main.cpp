@@ -5,8 +5,8 @@
 #include <OTAServer.h>
 #include "wifi_secrets.h"
 
-#define BTN_LEFT 18
-#define BTN_RIGHT 19
+#define BTN_LEFT 27
+#define BTN_RIGHT 35
 
 #define COLOR_1 TFT_BLUE    
 #define COLOR_2 TFT_YELLOW   
@@ -89,8 +89,8 @@ void setup()
 
   otaServer.enable();
 
-  pinMode(21, OUTPUT);
-  digitalWrite(21, HIGH);
+  pinMode(22, OUTPUT);
+  digitalWrite(22, HIGH);
 
   pinMode(BTN_LEFT, INPUT_PULLUP);
   pinMode(BTN_RIGHT, INPUT_PULLUP);
