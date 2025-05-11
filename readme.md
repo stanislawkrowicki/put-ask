@@ -53,7 +53,7 @@ tutaj jakiś tekst o tym że super fajny designe co jesti czemu to jest i jak ba
 | SPI_MISO       | IO19  | Master In Slave Out (data)           |
 | SPI_CLK        | IO18  | Clock signal                         |
 | D_DC           | IO16  | Data/Command control                 |
-| D_RST          | IO28  | Display reset signal                 |
+| D_RST          | IO17  | Display reset signal                 |
 | D_LED          | IO22  | Display backlight control            |
 #### SD card
 
