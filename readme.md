@@ -7,21 +7,17 @@
 ## 📌 Table of Contents
 - [🎯 Project Goal](#-project-goal)
 - [🔧 Hardware Design](#-hardware-design)
-
 - [💻 Usage](#-usage)
-- [📸 Photos & Schematics](#-photos--schematics)
-- [📜 License](#-license)
-- [🤝 Contribution](#-contribution)
+- [🔧 Execution REV1](#-execution)
 
 ---
 
 ## 🎯 Project Goal
 
-Portable and pocket size console, able to load games from external sd card. Possibility of on-line gameplay via Wi-Fi. Custom PCB board, self-made using CNC milling and UV solder mask paint. 3D printed box.
+Portable and pocket size console, able to load games from external sd card. Possibility of on-line gameplay via Wi-Fi. Custom PCB board, self-made using CNC milling and UV solder mask paint; 3D printed case.
 
 ## 🔧 Hardware Design
-tutaj jakiś tekst o tym że super fajny designe co jesti czemu to jest i jak bardzo cool jest pozdrawiam dam zdjecie schematu np:
-
+The PCB was designed to be produced using a double-sided FR4 PCB blank. Unfortunately, due to the process, every via had to be soldered using copper wire. 
 
 ### ESP32 pinout description
 #### buttons 
@@ -84,7 +80,8 @@ tutaj jakiś tekst o tym że super fajny designe co jesti czemu to jest i jak ba
   <img src="mdi/schem_all.jpg" alt="schematic of all" width="1000">
 </p> -->
 
-### Power Management Unit (IP5306)  
+### Power Management Unit (IP5306) 
+#### read execution paragraph !!!!
 The console can be powered remotely using, for example, a 18650 Li-ion battery. Plugging the console into external power through USB-C will power the device and charge the battery. The IP5306 is used according to the typical application from the [datasheet](https://www.datasheetcafe.com/wp-content/uploads/2020/07/IP5306.pdf). We used a one-LED configuration and skipped the KEY_LED (D5 on the datasheet).
 
 <p align="center">
@@ -95,19 +92,14 @@ The console can be powered remotely using, for example, a 18650 Li-ion battery. 
 
 Description of how to use the project, e.g., how to start it, available modes, etc.
 
-## 📸 Photos & Schematics
 
-(Include circuit diagrams, wiring diagrams, photos of the finished device, etc.)
+## 🔧 Execution
+PCB has been *mostly* succesfully produced. We well leave few notes descriing conclusions about what went wront or what has fullfilled our hopes. 
 
-## 📜 License
-
-Specify the license under which the project is distributed (e.g., MIT, GPL, CC BY-SA).
-
-## 🤝 Contribution
-
-Guidelines for contributions, reporting issues, ideas, and pull requests.
+- Power Management Unit failure: To be honest, I still don't know what went wrong. Despite the design being according to the datasheet, the IC has been failing, producing heat that desoldered the chip itself. After a few attempts and considering the deadline, I gave up on the idea of a remote power supply. If I were to do this again, I would design a separate board responsible for the power supply only.
+- The input-only pins (*IO35, IO34*) are not equipped with internal pull-ups. I didn't design external resistors for that purpose.
+- The WS2812 segment isn't working due to a really silly bug. The collector of the *Q1* transistor is not pulled up to 5V. 
+- The USB-C port should have been placed with bigger mounting pads; it is hard to solder the socket.
 
 ---
-
-📧 **Contact**: [Your website / email / repository link]
 
