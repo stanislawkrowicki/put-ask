@@ -94,12 +94,17 @@ Description of how to use the project, e.g., how to start it, available modes, e
 
 
 ## 🔧 Execution
-PCB has been *mostly* succesfully produced. We well leave few notes descriing conclusions about what went wront or what has fullfilled our hopes. 
+The PCB has been *mostly* successfully produced. We will leave a few notes describing our conclusions about what went wrong and what met or exceeded our expectations.
 
-- Power Management Unit failure: To be honest, I still don't know what went wrong. Despite the design being according to the datasheet, the IC has been failing, producing heat that desoldered the chip itself. After a few attempts and considering the deadline, I gave up on the idea of a remote power supply. If I were to do this again, I would design a separate board responsible for the power supply only.
-- The input-only pins (*IO35, IO34*) are not equipped with internal pull-ups. I didn't design external resistors for that purpose.
-- The WS2812 segment isn't working due to a really silly bug. The collector of the *Q1* transistor is not pulled up to 5V. 
-- The USB-C port should have been placed with bigger mounting pads; it is hard to solder the socket.
+- Power Management Unit Failure: To be honest, I still don’t know exactly what went wrong. The design followed the datasheet, but the IC consistently failed, producing enough heat to desolder itself. After several attempts and considering the project deadline, I abandoned the idea of a remote power supply. If I were to do this again, I’d design a separate board dedicated solely to power management.
+
+- Input-Only Pins (IO35, IO34): These pins lack internal pull-up resistors, and I neglected to include external ones in the design.
+
+- WS2812 Segment Issue: This one’s due to a simple oversight: the collector of the Q1 transistor isn’t pulled up to 5V, which prevents proper operation of the LED segment.
+
+- USB-C Port Soldering Difficulty: The mounting pads for the USB-C connector are too small, making the socket difficult to solder reliably. Larger pads would have made assembly easier.
+
+
 
 ---
 
