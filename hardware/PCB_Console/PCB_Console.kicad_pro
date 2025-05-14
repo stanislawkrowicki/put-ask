@@ -445,7 +445,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -489,9 +489,11 @@
         "wire_width": 6
       },
       {
+        "bus_width": 12,
         "clearance": 0.35,
         "diff_pair_gap": 0.25,
         "diff_pair_width": 0.2,
+        "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "grube",
@@ -500,7 +502,8 @@
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.45,
         "via_diameter": 0.95,
-        "via_drill": 0.5
+        "via_drill": 0.5,
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -622,7 +625,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "../../mdi/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
