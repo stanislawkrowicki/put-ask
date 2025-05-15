@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     loadGames().then()
-    loadDevices().then()
+    loadDevicesList().then()
 })
 
 const loadGames = async () => {
@@ -30,12 +30,16 @@ const loadGames = async () => {
     })
 }
 
-const loadDevices = async() => {
-    const devices = await eel.discover_devices()()
+const loadDevicesList = async() => {
+    const devices = getLocalDevices()
 
-    devices.forEach((device) => {
-        const deviceName = device[0]
+    if (!devices || devices.length === 0) return 
 
+    const devicesDiv = document.querySelector('#devices')
+
+    devicesDiv.innerHTML = ''
+
+    devices.forEach((deviceName) => {
         const div = document.createElement('div')
         div.className = 'device'
 
@@ -50,6 +54,6 @@ const loadDevices = async() => {
         div.appendChild(img)
         div.appendChild(p)
         
-        document.querySelector('#devices').appendChild(div)
+        devicesDiv.appendChild(div)
     })
 }

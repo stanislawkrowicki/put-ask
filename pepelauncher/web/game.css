@@ -43,3 +43,38 @@
   transform: translateY(0);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
+#devices {
+  width: 12rem;
+  height: 3rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #f0f0f0;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  /* Dropdown arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23690690' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#devices:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+#devices:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(105, 6, 144, 0.4);
+}
