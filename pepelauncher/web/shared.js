@@ -17,8 +17,9 @@ const fetchDevices = async () => {
     lastFetchedDevicesJSON = devicesJSON
     localStorage.setItem('devices', devicesJSON)
 
-    if (loadDevicesList)
-        loadDevicesList()
+    try {
+        loadDevicesList?.()
+    } catch {}
 }
 
 const getLocalDevices = () => {

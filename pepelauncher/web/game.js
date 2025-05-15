@@ -14,6 +14,7 @@ window.addEventListener('load', async () => {
     })
 
     addDevicesToSelect()
+    setInterval(addDevicesToSelect, FETCH_DEVICES_INTERVAL)
 })
 
 const play = () => {
@@ -21,9 +22,17 @@ const play = () => {
     eel.start_game(getGameName(), selectedDevice)().then()
 }
 
+let lastAddedDevicesJSON
+
 const addDevicesToSelect = () => {
     const select = document.querySelector('#devices')
     const devices = getLocalDevices()
+
+    const devicesJSON = JSON.stringify(devices)
+
+    if (lastAddedDevicesJSON === devicesJSON) return
+
+    lastAddedDevicesJSON = devicesJSON
 
     select.innerHTML = ''
 

@@ -64,5 +64,6 @@ def start_discovery_loop():
 
 if __name__ == '__main__':
     thumbnails.copy_to_dist()
+    discover_devices()
     threading.Thread(target=start_discovery_loop, daemon=True).start()
     eel.start('index.html')
