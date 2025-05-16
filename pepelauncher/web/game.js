@@ -26,7 +26,7 @@ const play = () => {
 
 /* Exposed to EEL */
 const onGameStart = () => {
-    document.querySelector('#play-button').setAttribute('disabled', false)
+    document.querySelector('#play-button').removeAttribute('disabled')
 }
 
 let lastAddedDevicesJSON

@@ -32,17 +32,47 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
 }
 
-#play-button:hover {
+#play-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-#play-button:active {
+#play-button:active:not(:disabled) {
   transform: translateY(0);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
+#play-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  color: transparent;
+  position: relative;
+}
+
+/* Spinning loader */
+#play-button:disabled::after {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 
 #devices {
   width: 12rem;
