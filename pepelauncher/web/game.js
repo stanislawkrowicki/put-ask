@@ -3,23 +3,30 @@ const getGameName = () => {
 }
 
 window.addEventListener('load', async () => {
-    const games = await eel.get_games()()
+    const game = getGameName()
 
-    games.forEach((game) => {
-        document.querySelector('#name').innerHTML = game
-        
-        const img = document.querySelector('#thumbnail')
-        img.src = `./img/games/${game}.png`
-        img.alt = game
-    })
+    document.querySelector('#name').innerHTML = game
+    
+    const img = document.querySelector('#thumbnail')
+    img.src = `./img/games/${game}.png`
+    img.alt = game
+
 
     addDevicesToSelect()
     setInterval(addDevicesToSelect, FETCH_DEVICES_INTERVAL)
+
+    eel.expose(onGameStart, 'on_game_start')
 })
 
 const play = () => {
     const selectedDevice = document.querySelector('#devices').value
     eel.start_game(getGameName(), selectedDevice)().then()
+    document.querySelector('#play-button').setAttribute('disabled', true)
+}
+
+/* Exposed to EEL */
+const onGameStart = () => {
+    document.querySelector('#play-button').setAttribute('disabled', false)
 }
 
 let lastAddedDevicesJSON

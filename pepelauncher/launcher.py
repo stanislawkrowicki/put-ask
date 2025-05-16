@@ -1,5 +1,4 @@
 import eel
-import thumbnails
 from pathlib import Path
 import esp_client
 import asyncio
@@ -20,6 +19,7 @@ def get_games():
 
 @eel.expose
 def get_devices():
+    global devices
     # Return names only
     return [d[0] for d in devices]
 
@@ -42,6 +42,7 @@ def start_game(game: str, device_name: str):
         return
     
     esp_client.upload_firmware(device_ip, firmware_path)
+    eel.on_game_start()
     print('Game started!')
 
 ### UTILS ###
@@ -50,6 +51,7 @@ def discover_devices():
     devices = esp_client.discover_devices()
 
 async def discover_devices_loop():
+    global devices
     SLEEP_TIME = 10
 
     while True:
@@ -63,7 +65,6 @@ def start_discovery_loop():
 
 
 if __name__ == '__main__':
-    thumbnails.copy_to_dist()
     discover_devices()
     threading.Thread(target=start_discovery_loop, daemon=True).start()
     eel.start('index.html')

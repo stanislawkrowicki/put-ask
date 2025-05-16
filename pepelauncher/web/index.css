@@ -57,6 +57,7 @@ html {
     overflow: hidden;
     border-radius: 8px;
     text-decoration: none;
+    margin: 0 2rem 0 2rem;
 }
 
 .game:hover {

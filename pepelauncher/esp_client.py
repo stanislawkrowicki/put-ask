@@ -12,12 +12,14 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 sock.settimeout(DISCOVERY_TIME)
 
-sock.sendto(DISCOVERY_MESSAGE, (BROADCAST_IP, UDP_PORT))
-
 def discover_devices() -> tuple[str, str]:
     DISCOVERY_TIME = 3
+    
+    sock.sendto(DISCOVERY_MESSAGE, (BROADCAST_IP, UDP_PORT))
+    
     start = time.time()
     devices = []
+
 
     while time.time() - start < DISCOVERY_TIME:
         try:
