@@ -108,3 +108,37 @@
   outline: none;
   box-shadow: 0 0 0 3px rgba(105, 6, 144, 0.4);
 }
+
+#back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: #ccc;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#back-button::before {
+  content: '';
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-left: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transform: rotate(45deg);
+  margin-left: 4px;
+}
+
+#back-button:hover {
+  background-color: #aaa;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
