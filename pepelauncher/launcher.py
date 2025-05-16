@@ -3,6 +3,8 @@ from pathlib import Path
 import esp_client
 import asyncio
 import threading
+import sys
+import platform
 
 GAMES_PATH = './games/'
 
@@ -67,4 +69,15 @@ def start_discovery_loop():
 if __name__ == '__main__':
     discover_devices()
     threading.Thread(target=start_discovery_loop, daemon=True).start()
-    eel.start('index.html')
+    try:
+        # Default open on Chrome / Chromium
+        eel.start('index.html')
+    except EnvironmentError:
+        # If Chrome isn't found, fallback to Microsoft Edge on Win10 or greater
+        # and to Firefox on Linux
+        if sys.platform == 'win32' and int(platform.release()) >= 10:
+            eel.start('index.html', mode='edge')
+        elif sys.platform == 'linux':
+            eel.start('index.html', mode='firefox')
+        else:
+            raise
