@@ -12,12 +12,14 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 sock.settimeout(DISCOVERY_TIME)
 
-sock.sendto(DISCOVERY_MESSAGE, (BROADCAST_IP, UDP_PORT))
-
-def discover_devices():
+def discover_devices() -> tuple[str, str]:
     DISCOVERY_TIME = 3
+    
+    sock.sendto(DISCOVERY_MESSAGE, (BROADCAST_IP, UDP_PORT))
+    
     start = time.time()
     devices = []
+
 
     while time.time() - start < DISCOVERY_TIME:
         try:
@@ -26,15 +28,28 @@ def discover_devices():
         except socket.timeout:
             break
 
-    print(devices)
+    return devices
 
-def upload_firmware(device_ip: str, firmware_path: str):
+
+def upload_firmware(device_ip: str, firmware_path: str) -> tuple[int, str]:
     with open(firmware_path, 'rb') as f:
         response = requests.post(f'http://{device_ip}/update', files={'file': f})
 
-    print(response.text)
+    return (response.status_code, response.text)
 
-if __name__ == '__main__':
-    discover_devices()
-    #upload_firmware('192.168.1.138', './games/example.bin')
-    sock.close()
+
+"""
+Returns:
+tuple: 0: device name, 1: device ip
+"""
+def mock_discover_devices() -> tuple[str, str]:
+    return [
+        ('PepeBoy 1', '192.168.1.113'),
+        ('PePeBoy 2', '192.168.1.155')
+    ]
+
+
+def mock_upload_firmware(device_ip: str, firmware_path: str) -> tuple[int, str]:
+    print(f'Uploading {firmware_path} to {device_ip}')
+    time.sleep(1)
+    return (200, 'Update success')

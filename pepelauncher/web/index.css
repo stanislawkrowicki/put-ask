@@ -1,0 +1,115 @@
+body {
+    background-color: #eee;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#devices {
+    flex-basis: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-right: solid;
+    height: 100%;
+}
+
+.device {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.device-name {
+    font-size: 16px;
+}
+
+#games {
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto auto;
+}
+
+.game {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 256px;
+    height: 384px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 0 2rem 0 2rem;
+}
+
+.game:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.game > img {
+    width: 256px;
+    height: 384px;
+}
+
+.game-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.game-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.game:hover .game-img {
+    transform: scale(1.05);
+}
+
+.game-overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    padding: 12px 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 8px 8px;
+}
+
+@media only screen and (min-width: 992px) {
+    #games {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #games {
+        grid-template-columns: auto auto auto auto;
+    }
+}
