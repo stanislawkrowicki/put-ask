@@ -1,11 +1,20 @@
 import subprocess
 import shutil
 from pathlib import Path
+import argparse
+import os
 
 TARGET_DEVICE = 'esp32doit-devkit-v1'
 
 source_root = Path(__file__).resolve().parent.parent / 'software' / 'games'
 destination_root = Path(__file__).resolve().parent / 'games'
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--clean', action='store_true', help='Clean build cache before compiling')
+args = parser.parse_args()
+
+if args.clean:
+    print('Cleaning cache before compiling...\n')
 
 for game_dir in source_root.iterdir():
     if not game_dir.is_dir():
@@ -14,6 +23,12 @@ for game_dir in source_root.iterdir():
     print(f"\n\n\n *** Building game: {game_dir.name}\n")
 
     try:
+        if args.clean:
+            dir_to_delete = game_dir / '.pio'
+            if os.path.exists(dir_to_delete) and os.path.isdir(dir_to_delete):
+                shutil.rmtree(dir_to_delete)
+                print('Cleaned cache\n\n', dir_to_delete)
+
         subprocess.run(['pio', 'run'], cwd=game_dir, check=True)
 
         firmware_path = game_dir / '.pio' / 'build' / TARGET_DEVICE / 'firmware.bin'
