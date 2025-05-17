@@ -51,15 +51,6 @@ void setup()
   Serial.begin(115200);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("WiFi connected");
-
-  otaServer.enable();
-
   pinMode(21, OUTPUT);
   digitalWrite(21, HIGH);
 
@@ -220,6 +211,7 @@ void loop()
     resetGame();
   }
   delay(20);
+  otaServer.connectionLoop();
   otaServer.handleHttpClient();
   otaServer.handleDiscoveries();
 }

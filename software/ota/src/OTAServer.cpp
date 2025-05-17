@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "OTAServer.h"
+#include <WiFi.h>
 
 OTAServer::OTAServer() : httpServer(HTTP_SERVER_PORT) {}
 
@@ -78,5 +79,38 @@ void OTAServer::handleDiscoveries()
       udp.write((const uint8_t *)DEVICE_ID, strlen(DEVICE_ID));
       udp.endPacket();
     }
+  }
+}
+
+void OTAServer::connectionLoop()
+{
+  unsigned long currentTime = millis();
+
+  if (currentTime - lastWifiCheck < wifiCheckInterval)
+    return;
+
+  lastWifiCheck = currentTime;
+
+  if (WiFi.status() == WL_CONNECTION_LOST)
+  {
+    wifiConnected = false;
+    wifiCheckInterval = WIFI_CONN_CHECK_INTERVAL;
+  }
+
+  if (wifiConnected)
+    return;
+
+  if (WiFi.status() == WL_CONNECTED)
+  {
+    wifiConnected = true;
+    wifiCheckInterval = WIFI_STATUS_CHECK_INTERVAL;
+    this->enable();
+    Serial.println("WiFi connected");
+    return;
+  }
+
+  if (WiFi.status() == WL_CONNECT_FAILED)
+  {
+    Serial.println("WiFi connection failure!");
   }
 }

@@ -50,15 +50,6 @@ void setup()
   pinMode(BTN_RIGHT, INPUT_PULLUP);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-  // while (WiFi.status() != WL_CONNECTED)
-  // {
-  //   delay(500);
-  //   Serial.print(".");
-  // }
-  Serial.println("WiFi connected");
-
-  otaServer.enable();
-
   pinMode(21, OUTPUT);
   digitalWrite(21, HIGH);
   
@@ -282,6 +273,7 @@ void loop()
   //if (digitalRead(BTN_LEFT) == LOW) Serial.println("Button 3 pressed");
   //if (digitalRead(BTN_RIGHT) == LOW) Serial.println("Button 4 pressed");
   //delay(100);
+  otaServer.connectionLoop();
   otaServer.handleHttpClient();
   otaServer.handleDiscoveries();
 }
